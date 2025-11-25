@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Printer } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SlideNavigationProps {
@@ -15,8 +15,24 @@ export const SlideNavigation = ({
   onPrevious,
   onNext,
 }: SlideNavigationProps) => {
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 bg-card/80 backdrop-blur-lg px-6 py-4 rounded-full border border-border">
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-6 bg-card/80 backdrop-blur-lg px-6 py-4 rounded-full border border-border print:hidden">
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={handlePrint}
+        className="rounded-full"
+        title="Print to PDF"
+      >
+        <Printer className="h-5 w-5" />
+      </Button>
+
+      <div className="w-px h-6 bg-border" />
+      
       <Button
         variant="ghost"
         size="icon"

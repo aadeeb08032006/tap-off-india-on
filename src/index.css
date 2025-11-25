@@ -106,3 +106,32 @@ All colors MUST be HSL.
     }
   }
 }
+
+/* Print styles for PDF export */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  /* Show all slides on separate pages */
+  .min-w-full {
+    page-break-after: always;
+    break-after: page;
+    min-height: 100vh;
+  }
+  
+  /* Reset transform to show all slides */
+  [style*="translateX"] {
+    transform: none !important;
+  }
+  
+  .flex {
+    display: block !important;
+  }
+}
